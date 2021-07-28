@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from random import randint #libreria que entrega un numero aleatorio
+import os
 
 # db = SQLAlchemy()
 
@@ -13,7 +14,8 @@ class FamilyTree:
             'last' : self.last,
             'age' : 32,
             'parent' : None,
-            'child' : [2, 3]
+            'child' : [2, 3],
+            'URL' : os.environ.geet('BACKEND_URL')
         } ,
         {
             'id' : 2,
