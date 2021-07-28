@@ -15,7 +15,7 @@ class FamilyTree:
             'age' : 32,
             'parent' : None,
             'child' : [2, 3],
-            'URL' : os.environ.geet('BACKEND_URL')
+            'URL' : os.environ.get('BACKEND_URL')
         } ,
         {
             'id' : 2,
