@@ -1,19 +1,71 @@
 from flask_sqlalchemy import SQLAlchemy
+from random import randint #libreria que entrega un numero aleatorio
 
 db = SQLAlchemy()
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+class FamilyTree:
+    def __init__(self, last):
+        self.last = last
 
-    def __repr__(self):
-        return '<User %r>' % self.username
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "email": self.email,
-            # do not serialize the password, its a security breach
+        self.members = [ { 
+            'id' : 1,
+            'first' : 'Abuelo',
+            'last' : self.last,
+            'age' : 32,
+            'parent' : None,
+            'child' : [2, 3]
+        } ,
+        {
+            'id' : 2,
+            'first' : 'Tio',
+            'last' : self.last,
+            'age' : 32,
+            'parent' : 1,
+            'child' : None
+        },
+        {
+            'id' : 3,
+            'first' : 'Padre',
+            'last' : self.last,
+            'age' : 32,
+            'parent' : 1,
+            'child' : [4]
+        },
+        {
+            'id' : 4,
+            'first' : 'Apolo',
+            'last' : self.last,
+            'age' : 32,
+            'parent' : 3,
+            'child' : None
+        },
+        {
+            'id' : 5,
+            'first' : 'ApoloHermano',
+            'last' : self.last,
+            'age' : 32,
+            'parent' : 3,
+            'child' : None
+        },
+        {
+            'id' : 6,
+            'first' : 'Tio2',
+            'last' : self.last,
+            'age' : 32,
+            'parent' : 1,
+            'child' : [7]
+        },
+        {
+            'id' : 7,
+            'first' : 'Primo',
+            'last' : self.last,
+            'age' : 32,
+            'parent' : 6,
+            'child' : None
         }
+        ]
+    
+
+    # def generateId(self):
+    #     return randint(0, 99999999999999)
+    
