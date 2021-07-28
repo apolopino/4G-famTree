@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from random import randint #libreria que entrega un numero aleatorio
 
-db = SQLAlchemy()
+# db = SQLAlchemy()
 
 class FamilyTree:
     def __init__(self, last):
@@ -65,6 +65,11 @@ class FamilyTree:
         }
         ]
     
+    def memberId(self, id):
+        for miembro in self.members:
+            if miembro['id'] == int(id):
+                return miembro
+        return None
 
     # def generateId(self):
     #     return randint(0, 99999999999999)

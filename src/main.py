@@ -32,9 +32,15 @@ def sitemap():
     return generate_sitemap(app)
 
 
-@app.route('/all', methods=['GET'])
+@app.route('/members', methods=['GET'])
 def handle_all():
     return jsonify(family.members), 200
+
+@app.route('/members/<int:member_id>', methods=['GET'])
+def handle_member(member_id=None):
+    llama = family.memberId(member_id)
+    return jsonify(llama), 200
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
